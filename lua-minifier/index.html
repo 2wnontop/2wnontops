@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+</head>
+<html lang=en>
+<meta charset=utf-8>
+<title>Lua minifier</title>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=stylesheet href=eff.css>
+<meta name=description content="An online, on-the-fly Lua minifier.">
+<h1>Lua minifier</h1>
+<noscript><strong>To use this tool, please <a href=http://enable-javascript.com/>enable JavaScript</a> and reload the page.</strong></noscript>
+<h2>Input</h2>
+<textarea autofocus>local a = 0
+for z = 1, 10 do
+  if z > 5 then continue end
+  a += 1
+end
+print(a)</textarea>
+<h2>Minified result <button onclick="navigator.clipboard.writeText(document.getElementById('output').textContent)"><img src="copy.png" /></button> (<a href=#local%20a%20%3D%200%0Afor%20z%20%3D%201%2C%2010%20do%0A%20%20if%20z%20%3E%205%20then%20continue%20end%0A%20%20a%20%2B%3D%201%0Aend%0Aprint%28a%29 id=permalink>permalink</a>)</h2>
+<pre><code id=output>local a=0;for b=1,10 do if b>5 then continue end;a+=1 end;print(a)</code></pre>
+<dl>
+	<dt>Before
+		<dd>79 bytes
+	<dt>After
+		<dd>66 bytes
+	<dt>Compression ratio
+		<dd>16.46%
+</dl>
+<h2>About this tool</h2>
+<p>This tool uses <a href=https://mths.be/luamin>luamin</a> to minify any Lua snippet you enter. Under the hood, luamin uses <a href=https://oxyc.github.com/luaparse/>luaparse</a>. Modified to support continue and compound operators (+=, -=, *=, /=, ^=, %=).
+<p id=footer>Made by <a href=https://mathiasbynens.be/>@mathias</a> — <a href=https://github.com/mathiasbynens/mothereff.in/tree/master/lua-minifier>fork this on GitHub!</a></p>
+<script src=vendor/luaparse.js></script>
+<script src=vendor/luamin.js></script>
+<script src=eff.js></script>
